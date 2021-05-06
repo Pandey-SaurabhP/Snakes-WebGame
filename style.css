@@ -1,0 +1,129 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+#field{
+    display: flex;
+    margin: auto;
+}
+
+.body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,53,9,1) 51%, rgba(0,212,255,1) 100%); 
+}
+
+.navContainer{
+    width = 100%;
+    background-color: rgb(46, 46, 46);
+}
+
+.navBar{
+    display: grid;
+    grid-template-columns: 0.2fr auto 1fr;
+    align-items: center;
+    height: 80px;
+    width: 90%;
+    max-width: 1750px;
+    margin: 0 auto;
+}
+
+.logo{
+    color: cornsilk;
+    justify-self: start;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+.navMenu{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-self: end;
+}
+
+.navLinks{
+    font-style: normal;
+    font-size: large;
+    color: white;
+    text-decoration: none;
+}
+
+.navLinks:hover{
+    color: red;
+    transition: all 0.2s ease-out;
+}
+
+.navLinksBtn{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 10px;
+}
+
+.navLinksBtn:hover{
+    background-color: transparent;
+    padding: 4px 11px;
+    border: solid 1px;
+    transition: all 0.2 ease-out;
+}
+
+.myCanvas {
+    margin: auto;
+}
+
+/* .menuToggle .bar{
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: white;
+}
+
+@media screen and (max-width : 600px) {
+    .navContainer{
+        position: relative;
+    } 
+
+    .navMenu{
+        display: grid;
+        grid-template-columns: auto;
+        background: red;
+        margin: 0; 
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .logo{
+        margin-left: 20px;
+    } 
+
+    .navMenu.active{
+        background: rgb(46, 46, 46);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .navBar{
+        width: 100%;
+    }
+
+    .navLinks{
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+} */
