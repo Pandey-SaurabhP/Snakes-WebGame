@@ -32,7 +32,6 @@ function generateFood(){
     }
 
     if(speed > 60) speed -= 10;
-    console.log("[generateFood] food:" + foodx + ", " + foody)
 }
 
 function pushFront(v){
@@ -56,13 +55,13 @@ function printSnakeFood(){
     for(var i = 0; i < snakePos.length; i++){
         ctx.beginPath();
         ctx.rect(snakePos[i][0], snakePos[i][1], 25, 25);
-        ctx.fillStyle = '#FF0000';
+        ctx.fillStyle = 'white';
         ctx.fill();
     }
 
     ctx.beginPath();
     ctx.rect(foodx + 6.25, foody + 6.25, 12.5, 12.5);
-    ctx.fillStyle = '#FFFF00';
+    ctx.fillStyle = 'yellow';
     ctx.fill();
 }
 
@@ -113,9 +112,7 @@ function keepInField(){
 
 function onSelf(){
     var n = snakePos.length - 1;
-    var tmpHead = [snakePos[n][0], snakePos[n][1]];
-    
-    console.log("Head : " + tmpHead)
+    var tmpHead = [snakePos[n][0], snakePos[n][1]]; 
 
     for(var i = 0; i < snakePos.length - 1; ++i){
         if(tmpHead[0] == snakePos[i][0] &&
@@ -128,45 +125,47 @@ function onSelf(){
     return 0;
 }
 
+var speed = 0;
 function main(){
+    speed += 1;
     printSnakeFood();
     // autoMove();
-    commandedMove();
 
-    var got = [-1, -1];
+    if(speed % 7 == 0){
+        commandedMove();
 
-    if(foodx == snakePos[snakeHead][0] && foody == snakePos[snakeHead][1]){
-        got = [snakePos[0][0], snakePos[0][1]];
-        snakeHead = snakePos.length;
-        generateFood();
+        var got = [-1, -1];
+
+        if(foodx == snakePos[snakeHead][0] && foody == snakePos[snakeHead][1]){
+            got = [snakePos[0][0], snakePos[0][1]];
+            snakeHead = snakePos.length;
+            generateFood();
+        }
+
+        if(onSelf() == 1){
+            resetSnake();
+        }
+
+        if(got[0] != -1){
+            snakePos = pushFront(got);
+        }
+
+        keepInField();
+
+        for(i = 0; i < snakePos.length - 1; i++){
+            snakePos[i][0] = snakePos[i + 1][0];
+            snakePos[i][1] = snakePos[i + 1][1];
+        }
     }
 
-    if(onSelf() == 1){
-        resetSnake();
-    }
-
-    if(got[0] != -1){
-        snakePos = pushFront(got);
-    }
-
-    keepInField();
-
-    for(i = 0; i < snakePos.length - 1; i++){
-        snakePos[i][0] = snakePos[i + 1][0];
-        snakePos[i][1] = snakePos[i + 1][1];
-    }
-
-    ctx.fillStyle = "rgb(34,45,23,0.4)";
+    ctx.fillStyle = "rgb(210, 20, 60, 0.4)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    sleep(speed);
+    // sleep(speed);
     requestAnimationFrame(main);
 }
 
 document.addEventListener('keydown', function(event){
-
-    // console.log("snakePos:", snakePos)
-
     if(event.code == "ArrowLeft" && movement != 'r'){
         movement = 'l';
     }
@@ -181,9 +180,6 @@ document.addEventListener('keydown', function(event){
     }
 
     keepInField();
-
-    // requestAnimationFrame(main);
-    // main()
 });
 
 generateFood();
