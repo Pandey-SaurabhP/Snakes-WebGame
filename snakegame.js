@@ -121,7 +121,6 @@ function onSelf(){
             return 1;
         }
     }
-
     return 0;
 }
 
